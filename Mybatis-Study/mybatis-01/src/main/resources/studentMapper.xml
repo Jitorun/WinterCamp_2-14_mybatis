@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定一个对应的Mapper接口-->
+<mapper namespace="com.Jitorun.dao.studentMapper">
+    <select id="getstudentList" resultType="com.Jitorun.pojo.student">
+        select * from mybatis.student
+    </select>
+    <select id="getstudentByID" parameterType="int" resultType="com.Jitorun.pojo.student">
+        select * from mybatis.student where id = #{id}
+    </select>
+
+    <insert id="addstudent" parameterType="com.Jitorun.pojo.student" >
+        insert into mybatis.student(id,sname,sex) value (#{id},#{sname},#{sex})
+    </insert>
+
+    <update id="updatestudent" parameterType="com.Jitorun.pojo.student">
+        update mybatis.student set sname=#{sname},sex=#{sex}  where id = #{id};
+    </update>
+
+    <delete id="deletestudent" parameterType="int">
+        delete from mybatis.student where id = #{id};
+    </delete>
+</mapper>
